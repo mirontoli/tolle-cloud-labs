@@ -1,0 +1,15 @@
+az logout
+az login
+az account show
+az account subscription list
+az account set --subscription 54870baa-baf0-461c-97a2-8896423e6ca0
+az account show
+$rg = 'rg-minecraft_2024-01-28b'
+$loc = 'swedencentral'
+az group create -n $rg -l $loc
+az provider register --namespace "Microsoft.ContainerService"
+az deployment group create -g $rg --template-file mc.bicep --parameters mc.bicepparam
+# az group delete -n $rg
+az containerapp show --resource-group $rg --name 'minecraft'
+az containerapp list
+az containerapp ingress show --name 'minecraft' --resource-group $rg --query 'fqdn' --output tsv
