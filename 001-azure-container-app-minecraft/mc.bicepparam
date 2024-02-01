@@ -8,6 +8,9 @@ param containerImage = 'docker.io/itzg/minecraft-server:latest'
 param minecraftPort = 25565
 param volumeMountPoint = '/data'
 param minReplicas = 0
+// Standard_LRS does not support FileStorage
+// https://learn.microsoft.com/en-us/rest/api/storagerp/srp_sku_types
+param storageSKU = 'Premium_LRS'
 param env = [
   {
     name: 'EULA'

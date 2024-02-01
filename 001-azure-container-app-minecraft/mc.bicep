@@ -45,6 +45,13 @@ param volumeMountPoint string = '/data'
 @maxValue(1)
 param minReplicas int = 0
 
+@description('Storage Account SKU.')
+@allowed([
+  'Premium_LRS'
+  'Standard_LRS'
+])
+param storageSKU string = 'Standard_LRS'
+
 @description('The environment variables required to start a Minecraft server.')
 param env array
 
@@ -205,7 +212,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: storageName
   location: location
   sku: {
-    name: 'Premium_LRS'
+    name: storageSKU
   }
   kind: 'FileStorage'
   properties: {
