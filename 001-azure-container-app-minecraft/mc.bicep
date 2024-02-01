@@ -212,9 +212,9 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: storageName
   location: location
   sku: {
-    name: storageSKU
+    name: 'Standard_LRS' //Premium_LRS
   }
-  kind: 'FileStorage'
+  kind: 'StorageV2' //FileStorage
   properties: {
     allowBlobPublicAccess: false
     networkAcls: {

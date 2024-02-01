@@ -4,7 +4,7 @@ az account show
 az account subscription list
 az account set --subscription 54870baa-baf0-461c-97a2-8896423e6ca0
 az account show
-$rg = 'rg-minecraft_2024-02-01b'
+$rg = 'rg-minecraft_2024-02-01c'
 $loc = 'swedencentral'
 az group create -n $rg -l $loc
 az provider register --namespace "Microsoft.ContainerService"
